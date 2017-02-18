@@ -18,6 +18,8 @@ if csvlines:
 else:
 	maxFecha = datetime.date.today().strftime("%Y%m%d")
 
+maxFecha = "20160630"  # establece fecha máxima 30/jun/16
+
 print ("Comenzando desde fecha: " + str(maxFecha))
 
 fechas = []
@@ -75,5 +77,3 @@ for fecha in fechas:
 
 			csv.write(line)
 			csv.flush()
-
-
