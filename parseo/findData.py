@@ -18,7 +18,7 @@ csvwriter = csv.writer(csvout, delimiter=',', quotechar='"')
 csvwriter.writerow(next(csvreader) + ['dnis'])  # copia los encabezados del csv
 for row in csvreader:
     texto_acta = html2text.html2text(row[5])
-    dnis = re.findall('D\.?N\.?I\.? (\d{1,2}\.?\d{3}\.?\d{3})', texto_acta)  # sólo identifica 7-8 números juntos si precedido por "DNI"
+    dnis = re.findall('D\.?N\.?I\.?\s*(\d{1,2}\.?\d{3}\.?\d{3})', texto_acta)  # sólo identifica 7-8 números juntos si precedido por "DNI"
     # dnis = re.findall('\d{1,2}\.?\d{3}\.?\d{3}', texto_acta)  # suponemos que todo número de 7-8 dígitos es un DNI (conflicto con montos)
     csvwriter.writerow(row + [','.join(dnis).replace('.', '')])  # agrega dnis al final, separados por comas, sin puntos
 csvin.close
