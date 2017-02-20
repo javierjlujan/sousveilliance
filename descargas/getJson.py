@@ -1,79 +1,121 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+Descarga de los json del boletin oficial con la creación y modificación
+de las empresas
+"""
+
+import argparse
 import sys
-import json
-import requests
-from pprint import pprint
-import datetime
 import os
+import json
+import datetime
 
-fname = "data.csv"
+import requests
 
-csv = open(fname, "r")
-csvlines = csv.readlines()
-if csvlines:
-	lastLine = csvlines[-1]
-	maxFecha = lastLine.split(",")[-5].replace("\"","")
+
+# Parser los datos de la cli
+parser = argparse.ArgumentParser(description="Descarga de las BO")
+parser.add_argument('-i', '--inicio', dest='fechaInicio',
+                    default=datetime.date.today().strftime("%Y%m%d"),
+                    help='Fecha de la cual comenzar a descargar.\
+                    Forma: (yyyymmdd)')
+parser.add_argument('-f' '--fin', dest='fechaFinal',
+                    default='19970101',
+                    help='Fecha hasta la cual descargar..\
+                    Forma: (yyyymmdd)')
+args = parser.parse_args()
+
+
+# Archivo de salida
+fname = "BO_data.csv"
+
+
+# Si el archivo de salida existe, retomo desde donde dejo
+dirs = os.listdir()
+if fname in dirs:
+    csv = open(fname, "r")
+    csvLines = csv.readlines()
+    lastLine = csvLines[-1]
+    args.fechaInicio = lastLine.split(",")[-5].replace("\"", "")
+    # No necesita un header el csv
+    header = False
 else:
-	maxFecha = datetime.date.today().strftime("%Y%m%d")
+    header = True
 
-maxFecha = "20160630"  # establece fecha máxima 30/jun/16
 
-print ("Comenzando desde fecha: " + str(maxFecha))
-
+# Lista de fechas que voy a bajar
 fechas = []
-for anio in range(2017, 1997, -1):
-	for mes in range(13, 0, -1):
-		for dia in range(31, 0, -1):
-			fechaNueva = str(anio) + str(mes).zfill(2) + str(dia).zfill(2)
-			if fechaNueva < maxFecha:
-				fechas.append(fechaNueva)
+d1 = datetime.datetime.strptime(args.fechaInicio, "%Y%m%d")
+d2 = datetime.datetime.strptime(args.fechaFinal, "%Y%m%d")
+delta = d1 - d2
 
-primera_vez = True
+for i in range(delta.days + 1):
+    fecha = d1 - datetime.timedelta(days=i)
+    # Sole me quedo con los dias laborables
+    if fecha.weekday() in range(0, 5):
+        fechas.append(fecha.strftime("%Y%m%d"))
 
-cnt = 0
+
+print("Descargar desde: {0} hasta: {1}".format(args.fechaInicio,
+                                               args.fechaFinal))
+print("Se van a descar: {0} Boletines Oficiales\n".format(len(fechas)))
+
+urlSeciones = "https://www.boletinoficial.gob.ar/secciones/secciones.json"
+urlSegunda = "https://www.boletinoficial.gob.ar/norma/detalleSegunda"
 
 csv = open(fname, "a")
-for fecha in fechas:
-	#print(fecha)
-	data = {'nombreSeccion': "segunda", 'subCat': 'all', 'offset': '1', 'itemsPerPage':3000, 'fecha':int(fecha), 'idSesion':''}
-	r = requests.post("https://www.boletinoficial.gob.ar/secciones/secciones.json", data=data)
+totalBajados = 0
+text = "\rBO {0}/{1}. Detalles segunda del dia: {2}/{3}. Total bajados : {4}"
 
-	#print(r.status_code)
+for boCnt, fecha in enumerate(fechas):
+    data = {'nombreSeccion': "segunda", 'subCat': 'all',
+            'offset': '1', 'itemsPerPage': 3000,
+            'fecha': int(fecha), 'idSesion': ''}
+    r = requests.post(urlSeciones, data=data)
 
-	#Decoded
-	indiceSegunda = json.loads(r.text)
+    # Decoded
+    indiceSegunda = json.loads(r.text)
 
-	if indiceSegunda['dataList']:
-		for tramite in indiceSegunda['dataList'][0]:
-			cnt += 1
+    if indiceSegunda['dataList']:
+        for segundaCnt, tramite in enumerate(indiceSegunda['dataList'][0]):
+            totalBajados += 1
+            # Print numero de detalle bajado
+            sys.stdout.write(text.format(boCnt + 1, len(fechas),
+                                         segundaCnt + 1,
+                                         len(indiceSegunda['dataList'][0]),
+                                         totalBajados))
 
-			data = {'id': tramite["id"], 'fechaPublicacion': 'null', 'idSesion': ''}
-			t = requests.post("https://www.boletinoficial.gob.ar/norma/detalleSegunda", data=data)
-			detalleSegunda = json.loads(t.text)
-			sys.stdout.write('\r' + 'Cnt : ' + str(cnt) + ' fecha: ' + fecha + " " + detalleSegunda["dataList"]['rubroDescripcion'])
+            data = {'id': tramite["id"], 'fechaPublicacion': 'null',
+                    'idSesion': ''}
+            t = requests.post(urlSegunda, data=data)
 
-			# Creo el header
-			if primera_vez:
-				head = ""
-				for key in detalleSegunda["dataList"]:
-					head += key + ','
-				head = head[:-1]
-				head += '\n'
-				csv.write(head)
-				primera_vez = False
+            # Decoded
+            detalleSegunda = json.loads(t.text)
 
-			line = ''
+            # Creo el header
+            if header:
+                line = ""
+                for key in detalleSegunda["dataList"]:
+                    line += key + ','
+                line = line[:-1]
+                line += '\n'
+                csv.write(line)
+                header = False
 
-			#El denominacion social viene en null en detalle segunda, lo reemplazamos por el de tramite
-			if detalleSegunda["dataList"]["denominacionSocial"] == None:
-				detalleSegunda["dataList"]["denominacionSocial"] = tramite["denominacion"]
+            # La denominacion social viene en null en detalle segunda,
+            # lo reemplazamos por el de tramite
+            if detalleSegunda["dataList"]["denominacionSocial"] is None:
+                detalleSegunda["dataList"]["denominacionSocial"] = tramite["denominacion"]
 
-			for key in detalleSegunda["dataList"]:
-				line += "\""+str(detalleSegunda["dataList"][key]).replace(",","\,").replace("\"","\\\"") + "\""+','
-			line = line[:-1]
-			line += '\n'
+            line = ''
+            for key in detalleSegunda["dataList"]:
+                line += "\""+str(detalleSegunda["dataList"][key]).replace(",","\,").replace("\"", "\\\"") + "\""+','
+            line = line[:-1]
+            line += '\n'
 
-			csv.write(line)
-			csv.flush()
+            csv.write(line)
+            csv.flush()
+
+csv.close()
