@@ -48,7 +48,7 @@ if fname in dirs:
     csv = open(fname, "r")
     csvLines = csv.readlines()
     lastLine = csvLines[-1]
-    args.fechaInicio = lastLine.split(",")[-5].replace("\"", "")
+    args.fechaInicio = lastLine.split(",")[0].replace("\"", "")
     # No necesita un header el csv
     header = False
 else:
@@ -137,6 +137,7 @@ for boCnt, fecha in enumerate(fechas):
             # lo reemplazamos por el de tramite
             if detalleSegunda["dataList"]["denominacionSocial"] is None:
                 detalleSegunda["dataList"]["denominacionSocial"] = tramite["denominacion"]
+            # El rubro padre no esta en detallesSegunda
             detalleSegunda["dataList"]['rubroPadre'] = tramite['rubroPadre']
 
             line = ''
