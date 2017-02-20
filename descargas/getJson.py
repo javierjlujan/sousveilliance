@@ -11,8 +11,18 @@ import sys
 import os
 import json
 import datetime
+import re
 
 import requests
+
+
+def cleanHtml(raw_html):
+    """
+    Elimino todos los tag de html de un texto
+    """
+    cleanr = re.compile('<.*?>')
+    cleanText = re.sub(cleanr, '', raw_html)
+    return cleanText
 
 
 # Parser los datos de la cli
@@ -45,9 +55,6 @@ else:
     header = True
 
 
-# Lista de fechas que voy a bajar
-fechas = []
-
 # Me fijo que la fechas sean validas
 try:
     d1 = datetime.datetime.strptime(args.fechaInicio, "%Y%m%d")
@@ -61,6 +68,8 @@ except:
     print("Fecha final invalida")
     sys.exit(-1)
 
+# Lista de fechas que voy a bajar
+fechas = []
 delta = d1 - d2
 
 for i in range(delta.days + 1):
@@ -79,7 +88,14 @@ urlSegunda = "https://www.boletinoficial.gob.ar/norma/detalleSegunda"
 
 csv = open(fname, "a")
 totalBajados = 0
+# Mensaje del progeso de descarga
 text = "\rBO {0}/{1}. Detalles segunda del dia: {2}/{3}. Total bajados : {4}"
+# Atributos
+segundaKey = ['fechaPublicacion', 'idTramite', 'numeroTramite', 'anioTramite',
+              'idRubro', 'rubroDescripcion', 'rubroPadre',
+              'denominacionSocial', 'archivoPDF', 'paginaDesde',
+              'paginaHasta', 'suplemento', 'textoCompleto']
+
 
 for boCnt, fecha in enumerate(fechas):
     data = {'nombreSeccion': "segunda", 'subCat': 'all',
@@ -109,21 +125,24 @@ for boCnt, fecha in enumerate(fechas):
             # Creo el header
             if header:
                 line = ""
-                for key in detalleSegunda["dataList"]:
+                for key in segundaKey:
                     line += key + ','
                 line = line[:-1]
                 line += '\n'
                 csv.write(line)
+                csv.flush()
                 header = False
 
             # La denominacion social viene en null en detalle segunda,
             # lo reemplazamos por el de tramite
             if detalleSegunda["dataList"]["denominacionSocial"] is None:
                 detalleSegunda["dataList"]["denominacionSocial"] = tramite["denominacion"]
+            detalleSegunda["dataList"]['rubroPadre'] = tramite['rubroPadre']
 
             line = ''
-            for key in detalleSegunda["dataList"]:
-                line += "\""+str(detalleSegunda["dataList"][key]).replace(",","\,").replace("\"", "\\\"") + "\""+','
+            for key in segundaKey:
+                value = cleanHtml(str(detalleSegunda["dataList"][key]))
+                line += "\"" + value.replace(",", "\,").replace("\"", "\\\"") + "\""+','
             line = line[:-1]
             line += '\n'
 
