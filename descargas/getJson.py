@@ -47,8 +47,20 @@ else:
 
 # Lista de fechas que voy a bajar
 fechas = []
-d1 = datetime.datetime.strptime(args.fechaInicio, "%Y%m%d")
-d2 = datetime.datetime.strptime(args.fechaFinal, "%Y%m%d")
+
+# Me fijo que la fechas sean validas
+try:
+    d1 = datetime.datetime.strptime(args.fechaInicio, "%Y%m%d")
+except:
+    print("Fecha inicial invalida")
+    sys.exit(-1)
+
+try:
+    d2 = datetime.datetime.strptime(args.fechaFinal, "%Y%m%d")
+except:
+    print("Fecha final invalida")
+    sys.exit(-1)
+
 delta = d1 - d2
 
 for i in range(delta.days + 1):
