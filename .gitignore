@@ -16,5 +16,5 @@ __pycache__/
 
 # Some directorys
 # Dont commit the data
-./datos/igj-entidades.csv
-./datos/igj-autoridades.csv
+datos/igj-entidades.csv
+datos/igj-autoridades.csv
