@@ -1,38 +1,45 @@
-# hackaton-boletin-oficial
+# Hackaton Sousveilliance
+ex hackaton-boletin-oficial
 
-Archivos desarrollados durante el hackarton de boletin oficial
+## Getting Started
+“Sousveillance (roughly French for undersight) is the opposite of surveillance (roughly French for oversight). But by ``sousveillance'' (...) Thus the ``under'' (sight) means from down under in the hierarchy, rather than physically as in ``underneath'' the floor.”
+Steve Mann, 2002
 
-Dos equipos de trabajo
-- Descarga de PDF y datos -> descargas
-- Procesamiento de datos -> parseo
+###  Objetivo 
+El objetivo específico del hackathon es pasar dos días trabajando, aprendiendo y enseñando. Compartir nuestras capacidades e información para analizar la relación entre las empresas, la política, el estado y las personas.
+
+### Estructura de Carpetas
++ Datos Hardcodeados: Extracto o muestra de datos que se usan como demo.
+- Datos Limpios: Datos que fueron procesados y acomodados. Debe aclararse que herraminta o procedimiento se utilizo y linkear a la fuente o extracto de datos sin limpiar.
+- Datos Crudos
++ Herramientas: Desarrollos especificos como descargas, parsers, etc. 
+
+**Aclaración General**
+* Las herramientas, y por tanto el codigo, que se generan durante el evento es escrito con objetivos muy puntuales y no se tiene en cuenta la calidad del codigo por lo tanto es altamente probable que existan numersos bugs/errores y que su uso por terceros no resulte del todo claro o que requiera leer el codigo para entender el funcionamiento.
+
+* Si sos desarrollador, recorda crear un archivo README.md explicando el uso de tú codigo y poniendo todas las aclaraciones que consideres necesarios y **no olvides dejar tu contacto!**
+
+### Fuentes de Datos
+* [IGJ](http://datos.jus.gob.ar/dataset/entidades-constituidas-en-la-inspeccion-general-de-justicia-igj)
+* [Facturas Truchas](http://clarin.opendata.junar.com/dashboards/9114/usinas-de-facturas-apocrifas/)
+* [Panama Papers](https://offshoreleaks.icij.org/)
+* [Boletin Oficial Nacional](https://www.boletinoficial.gob.ar) - requiere ver el codigo para extraer los PDF o la herramienta 
+* [Boletin Oficial PBA:](https://offshoreleaks.icij.org/) - Boletin Oficial Provincia de Buenos Aires
+ 
+### Recursos externos
+* [Neo4j](https://offshoreleaks.icij.org/)
+* [Python Natural Language Toolkit](www.nltk.org/)
 
 
-Programadores que participaron del evento:
-@javierjlujan
-@diegodlh
-@martinszy
-@fnbellomo
-@pablosoffietti.
+### HackDash
+https://hackdash.org/dashboards/svlhack
 
-## Descargar los datos
+### Participantes
+Deja acá anotado tu nombre o nick junto con alguna red social, preferentemente twitter.
+* @javierjlujan
+* @diegodlh
+* @martinszy
+* @fnbellomo
+* @pablosoffietti.ws
 
-Es necesario descargar los datos igj para realizar varios de los análisis del repo. Para esto:
-
-    $ python3 getData.py
-
-Y listo!
-
-## comparar/comparador.py
-Queríamos saber si las sociedades que figuran en el Boletín Oficial efectivamente
-figuran en la base de datos de la IGJ también.
-El script comparador.py toma una a una las sociedades mencionadas en los
-Boletines Oficiales descargados (en principio sólo las Sociedades Anónimas
-constituidas) y verifica su existencia en la última base de datos de IGJ
-descagada.
-Encontramos sociedades en el Boletín Oficial que no se encuentran en IGJ.
-Suponiendo que podía deberse a que la información en IGJ no está del todo
-actualizada, queremos intentar nuevamente con Boletines Oficiales más antiguos
-(anteriores al 30jun16). Esto está pendiente (hay que descargar estos Boletines
-Oficiales).
-delahera@gmail.com
 
