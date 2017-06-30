@@ -42,15 +42,5 @@ https://hackdash.org/dashboards/svlhack
 
 ### Participantes
 Deja acá anotado tu nombre o nick junto con alguna red social, preferentemente twitter.
-* @javierjlujan
-* @diegodlh
-* @martinszy
-* @fnbellomo
-* @pablosoffietti.ws
-* @amilanese
-* @martinalalu
-* @renlavin
-* @ACIJargentina
-* @spcrucianelli
-
+@javierjlujan @diegodlh @martinszy @fnbellomo @pablosoffietti.ws @amilanese @martinalalu @renlavin @ACIJargentina @spcrucianelli @ucaomo
 
