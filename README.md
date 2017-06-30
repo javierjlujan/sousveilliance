@@ -30,7 +30,7 @@ El objetivo específico del hackathon es pasar dos días trabajando, aprendiendo
 * [Facturas Truchas](http://clarin.opendata.junar.com/dashboards/9114/usinas-de-facturas-apocrifas/)
 * [Panama Papers](https://offshoreleaks.icij.org/)
 * [Boletin Oficial Nacional](https://www.boletinoficial.gob.ar) - Requiere ver el codigo para extraer los PDF o la herramienta 
-* [Boletin Oficial PBA:](http://www.gob.gba.gov.ar/Bole/buscador/publico/) - Boletin Oficial Provincia de Buenos Aires
+* [Boletin Oficial PBA:](http://boletinoficial.buenosaires.gob.ar/documentos/boletines/2010/11/20101130ax.pdf) - Boletin Oficial Provincia de Buenos Aires
  
 ### Recursos externos
 * [Neo4j](https://offshoreleaks.icij.org/)
