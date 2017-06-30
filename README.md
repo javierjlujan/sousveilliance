@@ -29,8 +29,8 @@ El objetivo específico del hackathon es pasar dos días trabajando, aprendiendo
 * [IGJ](http://datos.jus.gob.ar/dataset/entidades-constituidas-en-la-inspeccion-general-de-justicia-igj)
 * [Facturas Truchas](http://clarin.opendata.junar.com/dashboards/9114/usinas-de-facturas-apocrifas/)
 * [Panama Papers](https://offshoreleaks.icij.org/)
-* [Boletin Oficial Nacional](https://www.boletinoficial.gob.ar) - requiere ver el codigo para extraer los PDF o la herramienta 
-* [Boletin Oficial PBA:](https://offshoreleaks.icij.org/) - Boletin Oficial Provincia de Buenos Aires
+* [Boletin Oficial Nacional](https://www.boletinoficial.gob.ar) - Requiere ver el codigo para extraer los PDF o la herramienta 
+* [Boletin Oficial PBA:](http://www.gob.gba.gov.ar/Bole/buscador/publico/) - Boletin Oficial Provincia de Buenos Aires
  
 ### Recursos externos
 * [Neo4j](https://offshoreleaks.icij.org/)
@@ -47,5 +47,10 @@ Deja acá anotado tu nombre o nick junto con alguna red social, preferentemente 
 * @martinszy
 * @fnbellomo
 * @pablosoffietti.ws
+* @amilanese
+* @martinalalu
+* @renlavin
+* @ACIJargentina
+* @spcrucianelli
 
 
