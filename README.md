@@ -34,11 +34,13 @@ El objetivo específico del hackathon es pasar dos días trabajando, aprendiendo
 * [Boletines Oficiales Cordoba](https://github.com/OpenDataCordoba/boletin-cba-scraper)
 * [Padron Afip](http://www.afip.gob.ar/genericos/cInscripcion/archivoCompleto.asp)
 * [Base de CUIT AFIP](https://aws.afip.gov.ar/sr-padron/v2/persona/[acavaelcuit]) - reemplazar "acavaelcuit" en la URL
+* [Consultas de Sentencias Judiciales](http://www.consultapublica.jusbaires.gob.ar)
+
 ### Recursos externos
 * [Neo4j](https://offshoreleaks.icij.org/)
 * [Python Natural Language Toolkit](www.nltk.org/)
 * [Stanford CoreNLP – Natural language software](https://stanfordnlp.github.io/CoreNLP/index.html)
-* [Consultas de Sentencias Judiciales](http://www.consultapublica.jusbaires.gob.ar)
+* [Jupyter](http://jupyter.org/)
 
 
 ### HackDash
