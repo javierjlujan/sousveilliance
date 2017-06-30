@@ -4,7 +4,7 @@ Simple script para obtener los detalles de segunda del boletin oficial.
 
 ## Uso
 
-    $ python getJson.py --fechaInial 20170219 --fechaFinal 19900219
+    $ python getJson.py -i 20170219 -f 19900219
 
     Parametros
     ----------
