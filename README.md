@@ -31,6 +31,7 @@ El objetivo específico del hackathon es pasar dos días trabajando, aprendiendo
 * [Panama Papers](https://offshoreleaks.icij.org/)
 * [Boletin Oficial Nacional](https://www.boletinoficial.gob.ar) - Requiere ver el codigo para extraer los PDF o la herramienta 
 * [Boletin Oficial PBA:](http://boletinoficial.buenosaires.gob.ar/documentos/boletines/2010/11/20101130ax.pdf) - Boletin Oficial Provincia de Buenos Aires
+* [Boletines Oficiales Cordoba](https://github.com/OpenDataCordoba/boletin-cba-scraper)
  
 ### Recursos externos
 * [Neo4j](https://offshoreleaks.icij.org/)
