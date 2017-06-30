@@ -1,0 +1,23 @@
+dat# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+
+# For Ipython
+.ipynb_checkpoints/
+
+# C and Fortran extensions
+*.so
+*.o
+
+# For emacs
+*~
+\#*
+.#*
+
+# Some directorys
+# Dont commit the data
+datos/igj-entidades.csv
+datos/igj-autoridades.csv
+datos/igj-balances.csv
+datos/igj-asambleas.csv
+datos/igj-domicilios.csv

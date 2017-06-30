@@ -1,0 +1,1 @@
+A partir del csv obtenido de IGJ extraer los DNIs del texto del acta.
