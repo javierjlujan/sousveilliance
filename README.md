@@ -32,10 +32,15 @@ El objetivo específico del hackathon es pasar dos días trabajando, aprendiendo
 * [Boletin Oficial Nacional](https://www.boletinoficial.gob.ar) - Requiere ver el codigo para extraer los PDF o la herramienta 
 * [Boletin Oficial PBA:](http://boletinoficial.buenosaires.gob.ar/documentos/boletines/2010/11/20101130ax.pdf) - Boletin Oficial Provincia de Buenos Aires
 * [Boletines Oficiales Cordoba](https://github.com/OpenDataCordoba/boletin-cba-scraper)
- 
+* [Padron Afip](http://www.afip.gob.ar/genericos/cInscripcion/archivoCompleto.asp)
+* [Base de CUIT AFIP](https://aws.afip.gov.ar/sr-padron/v2/persona/[acavaelcuit]) - reemplazar "acavaelcuit" en la URL
+* [Consultas de Sentencias Judiciales](http://www.consultapublica.jusbaires.gob.ar)
+
 ### Recursos externos
 * [Neo4j](https://offshoreleaks.icij.org/)
 * [Python Natural Language Toolkit](www.nltk.org/)
+* [Stanford CoreNLP – Natural language software](https://stanfordnlp.github.io/CoreNLP/index.html)
+* [Jupyter](http://jupyter.org/)
 
 
 ### HackDash
