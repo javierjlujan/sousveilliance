@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="container">
+  <h2>{{ nombre_calle }}</h2>
+
+  <!-- Distance 1 -->
+  <!-- ========== -->
+  <div class="">
+
+    <h3>Distancia 1</h3>
+    
+    <form action="{{ url_for('submit') }}" method="post">
+      <div class="form_div">
+	{% for element in distance_1 %}
+
+	{% if loop.index % 4 == 1 %}
+	<div class="row">
+	{% endif %}
+
+	  <div class="col-md-3">
+	    <input type="checkbox" name="{{ element}}"
+		   value="True" id="{{ element }}" checked>
+	    <label for="{{ element }}"> {{ element }}</label>
+	  </div><!--/col -->
+
+	{% if loop.index % 4 == 0 %}
+	</div><!--/row -->
+	{% endif %}
+
+	{% endfor %}
+      </div><!--/form_div -->
+
+    </form>
+
+
+  <!-- Distance 2 -->
+  <!-- ========== -->
+  <div class="">
+
+    <h3>Distancia 2</h3>
+
+    <form action="{{ url_for('submit') }}" method="post">
+      <div class="form_div">
+	{% for element in distance_2 %}
+
+	{% if loop.index % 4 == 1 %}
+	<div class="row">
+	{% endif %}
+
+	  <div class="col-md-3">
+	    <input type="checkbox" name="{{ element}}"
+		   value="True" id="{{ element }}" >
+	    <label for="{{ element }}"> {{ element }}</label>
+	  </div><!--/col -->
+
+	{% if loop.index % 4 == 0 %}
+	</div><!--/row -->
+	{% endif %}
+
+	{% endfor %}
+      </div><!--/form_div -->
+
+    </form>
+
+
+  <!-- Distance 3 -->
+  <!-- ========== -->
+  <div class="">
+
+    <h3>Distancia 3</h3>
+    
+    <form action="{{ url_for('submit') }}" method="post">
+      <div class="form_div">
+	{% for element in distance_3 %}
+
+	{% if loop.index % 4 == 1 %}
+	<div class="row">
+	{% endif %}
+
+	  <div class="col-md-3">
+	    <input type="checkbox" name="{{ element}}"
+		   value="True" id="{{ element }}" >
+	    <label for="{{ element }}"> {{ element }}</label>
+	  </div><!--/col -->
+
+	{% if loop.index % 4 == 0 %}
+	</div><!--/row -->
+	{% endif %}
+
+	{% endfor %}
+      </div><!--/form_div -->
+
+      <input type="submit" value="Submit">
+    </form>
+
+</div><!--/container -->
+
+{% endblock %}
