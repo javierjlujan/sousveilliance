@@ -41,12 +41,16 @@ El objetivo específico del hackathon es pasar dos días trabajando, aprendiendo
 * [Python Natural Language Toolkit](www.nltk.org/)
 * [Stanford CoreNLP – Natural language software](https://stanfordnlp.github.io/CoreNLP/index.html)
 * [Jupyter](http://jupyter.org/)
+* [Repo de NLTK para BoletinOficial](https://github.com/martinkondra/BolOficial) - Martin kondra + Juliana Minalese
+* [Pandas Python](http://pandas.pydata.org/)
 
+### Notas 
+* [La Nación Data](http://blogs.lanacion.com.ar/data/argentina/hackaton-sousveillance-ii/) - Flor Cohelo @fcoel + Inés Selvood @ineselvi
 
 ### HackDash
 https://hackdash.org/dashboards/svlhack
 
 ### Participantes
 Deja acá anotado tu nombre o nick junto con alguna red social, preferentemente twitter.
-@javierjlujan @diegodlh @martinszy @fnbellomo @pablosoffietti.ws @amilanese @martinalalu @renlavin @ACIJargentina @spcrucianelli @ucaomo
+@javierjlujan @diegodlh @martinszy @fnbellomo @pablosoffietti.ws @amilanese @martinalalu @renlavin @ACIJargentina @spcrucianelli @ucaomo @fcoel @ineselvi
 
